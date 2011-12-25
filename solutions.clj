@@ -111,3 +111,8 @@ true
 ;; 27
 
 #(= (reverse %) (seq %))
+
+;; 29
+
+(fn [x] (apply str (filter #(Character/isUpperCase %) x)))
+
