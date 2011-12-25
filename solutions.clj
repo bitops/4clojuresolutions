@@ -107,3 +107,7 @@ true
 ;; 25
 
 #(filter (fn [n] (not (= 0 (mod n 2)))) %)
+
+;; 27
+
+#(= (reverse %) (seq %))
