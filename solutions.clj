@@ -108,6 +108,15 @@ true
 
 #(filter (fn [n] (not (= 0 (mod n 2)))) %)
 
+;; 26
+
+(fn [n]
+  (letfn [(fib [i]
+	       (if (>= 2 i)
+		 1
+		 (+ (fib (dec i)) (fib (- i 2)))))]
+        (map fib (take n (iterate #(inc %) 1)))))
+
 ;; 27
 
 #(= (reverse %) (seq %))
