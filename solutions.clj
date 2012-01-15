@@ -192,6 +192,20 @@ filter odd?
         result
         (recur (row result) (inc idx)))))))
 
+;; My favorite solution to this problem is
+;; from mysticcabbage. It is clean and
+;; very elegantly done. It works by putting
+;; zeros on either side of the triangle
+;; and then recursing through. Beautiful.
+
+(fn [row]
+  (nth
+    (iterate
+      #(map +
+        (concat '(0) %)
+        (concat % '(0)))
+      '(1)) (dec row)))
+
 ;; 107
 
 #(fn [x] (Math/pow x %))
