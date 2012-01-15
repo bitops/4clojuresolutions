@@ -106,7 +106,7 @@ true
 
 ;; 25
 
-#(filter (fn [n] (not (= 0 (mod n 2)))) %)
+filter odd?
 
 ;; 26
 
@@ -124,4 +124,77 @@ true
 ;; 29
 
 (fn [x] (apply str (filter #(Character/isUpperCase %) x)))
+
+;; 34
+
+#(take (- %2 %) (iterate inc %))
+
+;; 35
+
+7
+
+;; 36
+
+[x 7
+ y 3
+ z 1]
+
+;; 37
+
+"ABC"
+
+;; 42
+
+#(apply * (range 1 (inc %)))
+
+;; 45
+
+'(1 4 7 10 13)
+
+;; 47
+
+4
+
+;; 48
+
+6
+
+;; 57
+
+'(5 4 3 2 1)
+
+;; 64
+
++
+
+;; 68
+
+[7 6 5 4 3]
+
+;; 97
+
+(fn pascals-triangle [n]
+  (let [initial-rows {1 [1] 2 [1 1]}
+        guts (fn [coll]
+               (let [limit (dec (count coll))
+                     add (fn [c n] (+ (nth c n) (nth c (inc n))))]
+                 (loop [result []
+                        idx 0]
+                   (if (= idx limit)
+                     result
+                     (recur (conj result (add coll idx)) (inc idx))))))
+        row (fn [coll] (vec (flatten [1 (guts coll) 1])))]
+    (if (>= 2 n)
+    (initial-rows n)
+    (loop [result [1 1]
+           idx 2]
+      (if (= idx n)
+        result
+        (recur (row result) (inc idx)))))))
+
+;; 107
+
+#(fn [x] (Math/pow x %))
+
+
 
